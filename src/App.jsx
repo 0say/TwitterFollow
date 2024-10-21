@@ -1,35 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { TwitterFollowCard } from './TwitterFollowCard';
+import { faker } from '@faker-js/faker';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export function App () {
+    const randomUserName1 = faker.internet.userName();
+    const randomUserName2 = faker.internet.userName();
+    const randomUserName3 = faker.internet.userName();
+    return( 
+
+        <>
+            <TwitterFollowCard userName={randomUserName1} name={randomUserName1} />
+            <TwitterFollowCard userName={randomUserName2} name={randomUserName2} />
+            <TwitterFollowCard userName={randomUserName3} name={randomUserName3} />
+        </>
+    );
 }
-
-export default App
