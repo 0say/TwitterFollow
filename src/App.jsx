@@ -1,26 +1,46 @@
+/* eslint-disable react/jsx-key */
 import './App.css';
 import { TwitterFollowCard } from './TwitterFollowCard';
 import { faker } from '@faker-js/faker';
 
+const randomUserName1 = faker.internet.userName();
+const randomUserName2 = faker.internet.userName();
+const randomUserName3 = faker.internet.userName();
 
+const users = [
+    {
+        userName: randomUserName1,
+        name: randomUserName1,
+        isFollowing: true
+    },
+    {
+        userName: randomUserName2,
+        name: randomUserName2,
+        isFollowing: true
+    },
+    {
+        userName: randomUserName3,
+        name: randomUserName3,
+        isFollowing: true
+    }
+]
 export function App () {
-    const randomUserName1 = faker.internet.userName();
-    const randomUserName2 = faker.internet.userName();
-    const randomUserName3 = faker.internet.userName();
     return( 
         <section className = "App">
-            <TwitterFollowCard userName={randomUserName1}>
-            {randomUserName1} 
-            </TwitterFollowCard>
+            {
+                users.map(user => {
+                    const {userName, name, isFollowing} = user
 
-            <TwitterFollowCard  userName={randomUserName2}>
-            {randomUserName2}
-            </TwitterFollowCard>
-
-            <TwitterFollowCard  userName={randomUserName3}>
-            {randomUserName3}
-            </TwitterFollowCard>
-
+            return (
+            <TwitterFollowCard
+            key={userName}
+            userName={userName}
+            initialIsFollowing={isFollowing}>
+                    {name}
+                </TwitterFollowCard>
+            )
+        })
+            }
         </section>
     )
 }
